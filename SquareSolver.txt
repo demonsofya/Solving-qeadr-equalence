@@ -1,0 +1,66 @@
+PUSH 0  	;Первый коэффициент
+POPREG AX	;Второй коэффициент
+PUSH 1		;Третий коэффициент
+POPREG BX
+PUSH 1
+POPREG CX	;10
+PUSH 0
+PUSHREG AX 
+JNE 28		;Если AX = 0, переходит в конец и выводит -1, иначе считает дискриминант
+PUSH -1
+PUSHREG CX	;20
+MVL
+PUSHREG BX	
+DIV
+OUT
+HLT
+PUSH -4		;Вот считается дискриминант
+PUSHREG AX	;30
+PUSHREG CX
+MVL
+MVL
+PUSHREG BX
+PUSHREG BX
+MVL		;40
+ADD
+POPREG DX
+PUSHREG DX
+PUSH 0
+JE 56 		; Вариант, когда дискриминант ноль
+JA 69 		;50 Вариант, когда корней два 
+PUSH 0		; Вариант, когда корней нет
+OUT 
+HLT
+PUSH -1
+PUSHREG BX
+MVL		;60		
+PUSHREG AX
+PUSH 2
+MVL
+DIV
+OUT
+HLT
+PUSH -1
+PUSHREG BX
+MVL
+PUSHREG DX
+SQRT
+ADD
+PUSHREG AX
+PUSH 2
+MVL
+DIV
+OUT
+PUSH -1
+PUSHREG BX
+MVL
+PUSHREG DX
+SQRT
+SUB
+PUSHREG AX
+PUSH 2
+MVL
+DIV
+OUT
+HLT
+
