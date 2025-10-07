@@ -1,0 +1,23 @@
+PUSH 3  ;Если AX = 0, переходит в конец и выводит -1, иначе считает дискриминант
+POPREG AX
+PUSH 2
+POPREG BX
+PUSH 3
+POPREG CX
+PUSH 0
+PUSHREG AX 
+JNE 22
+PUSH -1
+OUT
+HLT
+PUSH -4		; Вот отсюда оно считает дискриминант
+PUSHREG AX
+PUSHREG CX
+MVL
+MVL
+PUSHREG BX
+PUSHREG BX
+MVL
+ADD
+OUT
+HLT
